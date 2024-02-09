@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+    <link rel="shortcut icon" href="#">
+	<title><?= $title ?></title>
+    <!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
@@ -13,16 +23,14 @@
 		</div>
 
 		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-			<li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-			<li><a href="#" class="nav-link px-2">Features</a></li>
-			<li><a href="#" class="nav-link px-2">Pricing</a></li>
-			<li><a href="#" class="nav-link px-2">FAQs</a></li>
-			<li><a href="#" class="nav-link px-2">About</a></li>
+			<li><a href="#" class="nav-link px-2 link-secondary">Lorem</a></li>
+			<li><a href="#" class="nav-link px-2">Ipsum</a></li>
 		</ul>
 
 		<div class="col-md-3 text-end">
-			<button type="button" class="btn btn-outline-primary me-2">Login</button>
-			<button type="button" class="btn btn-primary">Sign-up</button>
+            <? if (Auth::instance()->logged_in()):?>
+                <a href="/auth/logout" class="btn btn-primary me-2">Logout</a>
+            <? endif; ?>
 		</div>
 	</header>
 	<main>
@@ -30,7 +38,4 @@
 	</main>
 </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </html>

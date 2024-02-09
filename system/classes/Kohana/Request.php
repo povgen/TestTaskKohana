@@ -1332,4 +1332,9 @@ class Kohana_Request implements HTTP_Request {
 		return $this;
 	}
 
+	public function json()
+	{
+		return json_decode($this->body());
+	}
+
 }

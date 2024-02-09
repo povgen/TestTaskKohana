@@ -75,6 +75,7 @@ class Kohana_Response implements HTTP_Response {
 		415 => 'Unsupported Media Type',
 		416 => 'Requested Range Not Satisfiable',
 		417 => 'Expectation Failed',
+		422 => 'Unprocessable Entity',
 
 		// Server Error 5xx
 		500 => 'Internal Server Error',
@@ -712,6 +713,13 @@ class Kohana_Response implements HTTP_Response {
 		$start = ($end < $start) ? 0 : max($start, 0);
 
 		return array($start, $end);
+	}
+
+	public function json($data, $status = 200)
+	{
+		$this->headers('Content-Type', 'application/json');
+		$this->status($status);
+		$this->body(json_encode($data));
 	}
 
 }

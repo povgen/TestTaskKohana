@@ -1,10 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Auth extends Controller_Template {
+class Controller_Auth extends Controller_Template
+{
 
 	public $template = 'pages/login';
-	public function action_index()
+	public function action_login()
 	{
+		if (Auth::instance()->logged_in()) {
+			$this->redirect('welcome/index');
+			return;
+		}
+
 		if (!$this->request->post('submit')) {
 			return;
 		}
@@ -17,13 +23,14 @@ class Controller_Auth extends Controller_Template {
 			$this->template->error = 'Sorry, your password or login was incorrect. Please double-check your credentials.';
 			return;
 		}
-		//todo redirect to welcome
+
+		$this->redirect('PaymentSystem/index');
 	}
 
 	public function action_logout()
 	{
 		Auth::instance()->logout();
-		//todo redirect to login page
+		$this->redirect('auth/login');
 	}
 
 }

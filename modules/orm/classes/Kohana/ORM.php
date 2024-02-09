@@ -2354,4 +2354,19 @@ class Kohana_ORM extends Model implements serializable {
 
 		return ( ! $model->loaded());
 	}
+
+	/**
+	 * Like find_all, but returns array of arrays
+	 * @return array
+	 * @throws Kohana_Exception
+	 */
+	public function find_all_as_array()
+	{
+		$res = [];
+		$items = $this->find_all();
+		foreach ($items as $item) {
+			$res[] = $item->as_array();
+		}
+		return $res;
+	}
 } // End ORM
