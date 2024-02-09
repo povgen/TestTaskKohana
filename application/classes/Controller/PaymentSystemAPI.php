@@ -18,6 +18,10 @@ class Controller_PaymentSystemAPI extends Controller
 
 	public function action_savePaymentSystem()
 	{
+		if (!Auth::instance()->logged_in('admin')) {
+			$this->response->json('Forbidden', 403);
+			return;
+		}
 		$json = $this->request->json();
 
 		// if isset id we get entity from DB if not we should create a new one
